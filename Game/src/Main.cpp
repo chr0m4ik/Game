@@ -1,4 +1,4 @@
-#include "GameUI.h"
+#include "./includes/GameUI.hpp"
 
 int main() {
     GameUI ui;
