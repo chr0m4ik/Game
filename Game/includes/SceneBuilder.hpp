@@ -5,7 +5,7 @@
 
 class SceneBuilder {
 public:
-    static GameScene buildScene(int difficulty); // difficulty 1..3
+    static GameScene buildScene(int difficulty);
 };
 
 #endif // _SCENEBUILDER_HPP_

@@ -19,14 +19,14 @@ std::vector<std::string> GameScene::getAvailableActions() const {
 }
 
 int GameScene::calculatePoints() const {
-    // база 10 очков * сложность (чем больше свойств, тем больше очков)
+    // база 10 очков * сложность
     return 10 * difficultyLevel;
 }
 
 ActionResult GameScene::processAction(int action, const std::vector<int>& params) {
     ActionResult res{false, "", gameOver, 0};
 
-    if (action == 0) { // показать игрушки
+    if (action == 0) {
         std::string msg = "Ваши игрушки:\n";
         const auto& toys = player.getToys();
         if (toys.empty()) msg += "Нет игрушек.\n";
@@ -38,7 +38,7 @@ ActionResult GameScene::processAction(int action, const std::vector<int>& params
         res.message = msg;
         res.success = true;
     }
-    else if (action == 1) { // показать отверстия
+    else if (action == 1) {
         std::string msg = "Отверстия на панели:\n";
         const auto& frames = panel.getAllFrames();
         for (size_t i = 0; i < frames.size(); ++i) {
@@ -47,7 +47,7 @@ ActionResult GameScene::processAction(int action, const std::vector<int>& params
         res.message = msg;
         res.success = true;
     }
-    else if (action == 2) { // выбрать игрушку
+    else if (action == 2) {
         if (params.empty()) {
             res.message = "Не указан номер игрушки.";
             return res;
@@ -60,7 +60,7 @@ ActionResult GameScene::processAction(int action, const std::vector<int>& params
             res.message = "Неверный номер игрушки.";
         }
     }
-    else if (action == 3) { // поместить текущую игрушку в отверстие
+    else if (action == 3) {
         if (!player.hasCurrentToy()) {
             res.message = "Сначала выберите игрушку (действие 2).";
             return res;
@@ -80,7 +80,7 @@ ActionResult GameScene::processAction(int action, const std::vector<int>& params
             // Успех!
             int points = calculatePoints();
             score += points;
-            player.removeCurrentToy();      // игрушка исчезает из руки
+            player.removeCurrentToy();
             res.scoreEarned = points;
             res.success = true;
             if (player.toyCount() == 0) {
@@ -94,7 +94,7 @@ ActionResult GameScene::processAction(int action, const std::vector<int>& params
             res.message = "Неудача! Эта игрушка не подходит для данного отверстия.";
         }
     }
-    else if (action == 4) { // завершить игру
+    else if (action == 4) {
         gameOver = true;
         res.gameOver = true;
         res.success = true;
@@ -108,3 +108,8 @@ ActionResult GameScene::processAction(int action, const std::vector<int>& params
 
 int GameScene::getScore() const { return score; }
 bool GameScene::isGameOver() const { return gameOver; }
+
+Player& GameScene::getPlayer() { return player; }
+const Player& GameScene::getPlayer() const { return player; }
+Panel& GameScene::getPanel() { return panel; }
+const Panel& GameScene::getPanel() const { return panel; }

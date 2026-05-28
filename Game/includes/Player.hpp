@@ -7,15 +7,15 @@
 class Player {
 public:
     void addToy(Toy toy);
-    bool selectToy(size_t index);          // index = 1-based
+    bool selectToy(size_t index);
     const Toy* getCurrentToy() const;
     bool hasCurrentToy() const;
     size_t toyCount() const;
     const std::vector<Toy>& getToys() const;
-    bool removeCurrentToy();               // returns true if removed
-    void clearCurrentToy();                // reset selection
+    bool removeCurrentToy();
+    void clearCurrentToy();
 private:
     std::vector<Toy> toys;
-    size_t currentToyIndex = 0;            // 0 = none selected
+    size_t currentToyIndex = 0;
 };
 #endif //_PLAYER_HPP_

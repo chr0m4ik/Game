@@ -5,7 +5,7 @@
 
 class ToyFactory {
 public:
-    static Toy createRandomToy(int propertyCount); // 1,2,3
+    static Toy createRandomToy(int propertyCount);
 };
 
 #endif // _TOYFACTORY_HPP_

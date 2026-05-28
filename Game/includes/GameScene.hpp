@@ -22,6 +22,11 @@ public:
     int getScore() const;
     bool isGameOver() const;
     void startGame();
+    
+    Player& getPlayer();
+    const Player& getPlayer() const;
+    Panel& getPanel();
+    const Panel& getPanel() const;
 
 private:
     Player player;
@@ -30,7 +35,7 @@ private:
     int difficultyLevel;
     bool gameOver;
 
-    int calculatePoints() const; // очки за одно совпадение
+    int calculatePoints() const;
 };
 
 #endif // _GAMESCENE_HPP_

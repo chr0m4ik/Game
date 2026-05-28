@@ -1,0 +1,22 @@
+# Visual Studio
+.vs/
+.vscode/
+
+# Build output
+x64/
+Debug/
+Release/
+
+# Visual Studio user settings
+*.user
+*.vcxproj.user
+
+# Build artifacts
+*.exe
+*.lib
+*.obj
+*.pdb
+
+# Temporary files
+*.tmp
+*.log

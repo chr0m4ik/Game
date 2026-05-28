@@ -6,7 +6,7 @@
 class FrameFactory {
 public:
     static Frame createRandomFrame(int propertyCount);
-    static Frame createFrameFromToy(const Toy& toy); // точная копия свойств
+    static Frame createFrameFromToy(const Toy& toy);
 };
 
 #endif // _FRAMEFACTORY_HPP_

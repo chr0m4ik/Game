@@ -2,6 +2,16 @@
 #include "./includes/Toy.hpp"
 #include <cstdlib>
 
+static ShapeType randomShape() {
+    return static_cast<ShapeType>(rand() % 5);
+}
+static ColorType randomColor() {
+    return static_cast<ColorType>(rand() % 4);
+}
+static SizeType randomSize() {
+    return static_cast<SizeType>(rand() % 3);
+}
+
 Frame FrameFactory::createRandomFrame(int propertyCount) {
     std::vector<std::unique_ptr<Property>> props;
     if (propertyCount >= 1)

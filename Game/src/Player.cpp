@@ -33,7 +33,7 @@ bool Player::removeCurrentToy() {
     if (toys.empty()) {
         currentToyIndex = 0;
     } else {
-        currentToyIndex = 0; // after deletion, select first toy
+        currentToyIndex = 0;
     }
     return true;
 }

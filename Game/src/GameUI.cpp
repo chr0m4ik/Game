@@ -15,13 +15,13 @@ void GameUI::run() {
         auto actions = scene.getAvailableActions();
         int choice = getActionChoice(actions);
         std::vector<int> params;
-        if (choice == 2) { // выбрать игрушку
+        if (choice == 2) {
             std::cout << "Введите номер игрушки: ";
-            int idx = readInt(1, static_cast<int>(scene.player.toyCount()));
+            int idx = readInt(1, static_cast<int>(scene.getPlayer().toyCount()));
             params.push_back(idx);
-        } else if (choice == 3) { // поместить в отверстие
+        } else if (choice == 3) {
             std::cout << "Введите номер отверстия: ";
-            int idx = readInt(1, static_cast<int>(scene.panel.frameCount()));
+            int idx = readInt(1, static_cast<int>(scene.getPanel().frameCount()));
             params.push_back(idx);
         }
         ActionResult res = scene.processAction(choice, params);
@@ -42,9 +42,9 @@ int GameUI::chooseDifficulty() {
 void GameUI::displayGameInfo(const GameScene& scene) {
     std::cout << "\n--- Ход игры ---\n";
     std::cout << "Счёт: " << scene.getScore() << "\n";
-    std::cout << "Игрушек осталось: " << scene.player.toyCount() << "\n";
-    if (scene.player.hasCurrentToy()) {
-        std::cout << "Выбрана игрушка: " << scene.player.getCurrentToy()->toString() << "\n";
+    std::cout << "Игрушек осталось: " << scene.getPlayer().toyCount() << "\n";
+    if (scene.getPlayer().hasCurrentToy()) {
+        std::cout << "Выбрана игрушка: " << scene.getPlayer().getCurrentToy()->toString() << "\n";
     } else {
         std::cout << "Игрушка не выбрана.\n";
     }
@@ -59,7 +59,6 @@ int GameUI::getActionChoice(const std::vector<std::string>& actions) {
 }
 
 std::vector<int> GameUI::getParametersForAction(int action, const GameScene& scene) {
-    // Параметры запрашиваются непосредственно перед вызовом, поэтому здесь пусто
     return {};
 }
 
